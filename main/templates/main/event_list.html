@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content%}
+    <h1> All Events: </h1>
+    {% if eventlist %}
+        {%for Event in eventlist%}    
+            <ul>
+                <li>
+                    <a href="{{ Event.get_absolute_url }}"> {{Event.title}}</a>
+                    {{Event.user}}
+                </li>
+            </ul>
+        {% empty %}
+            <p>There are no events planned.</p>
+        {% endfor %}
+    {% else %}
+    {% endif %}
+{% endblock %}

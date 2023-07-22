@@ -9,9 +9,12 @@ class Event(models.Model):
                              help_text= 'Enter the title of the event' 
                              )
     
-    begin = models.DateTimeField()
-    end   = models.DateTimeField()
-    user = models.ForeignKey('Username', on_delete=models.SET_NULL, null= True )
+    begin = models.DateField()
+    end   = models.DateField()
+    user = models.CharField(
+                            max_length=50,
+                            help_text = 'Enter the user_s name' 
+                            )
     STATUSES = (
         ('e', 'ended'),
         ('w', 'will still happen'),
@@ -30,28 +33,19 @@ class Event(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('', args = [str(self.id)])
+        return reverse('event-detail', args = [str(self.id)])
 
-
-class Username(models.Model):
+class User(models.Model):
     name = models.CharField(
                             max_length=50,
                             help_text = 'Enter the user_s name' 
                             )
-    
-    def __str__(self):
-        return self.name
-    
-    def get_absolute_url(self):
-        return reverse('', args = [str(self.id)])
-
-
-class Userpass(models.Model):
     passwd = models.CharField(
                             max_length=50,
                             help_text='enter a password'
                             )
-
-class User(models.Model):
-    name  = models.ForeignKey('Username', on_delete = models.SET_NULL, null = True)
-    passwd =  models.ForeignKey('Userpass', on_delete = models.SET_NULL, null = True)
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('user-detail', args = [str(self.id)])

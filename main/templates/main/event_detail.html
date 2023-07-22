@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+
+{%block content %}
+    <h1>Event: {{Event.title}}</h1>
+    <ul>
+        <li>begins: {{Event.begin}}</li>
+        <li>ends: {{Event.end}}</li>
+        <li>created by: {{Event.user}}</li>
+        <li><a class="btn" href = "{% url 'update_event' Event.get_absolute_url %}">update</a></li>
+        <li><a class="btn" href = "{% url 'delete_event' Event.get_absolute_url %}">delete</a></li>
+    </ul>
+
+{%endblock%}

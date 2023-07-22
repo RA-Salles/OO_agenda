@@ -1,20 +1,18 @@
 from django.contrib import admin
-from .models import Event, User, Username, Userpass
+from .models import Event, User
 # Register your models here.
 
-admin.site.register(Event)
-admin.site.register(User)
-admin.site.register(Username)
-admin.site.register(Userpass)
+#admin.site.register(Event)
+#admin.site.register(User)
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('name', 'passwd')
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('Title', 'user')
+    list_display = ('title', 'user') 
 
 
-#admin.site.register(User, UserAdmin)
-#admin.site.register(Event, EventAdmin)
+admin.site.register(User, UserAdmin)
+admin.site.register(Event, EventAdmin)
 
 

@@ -1,0 +1,16 @@
+{%extends "base.html" %}
+
+{%block title%}
+<title> Welcome to Agenda </title>
+{%endblock%}
+
+{%block content %}
+    <h1>Agenda</h1>
+    <p>
+        Welcome to Agenda,<em> your personal planner.</em>
+    </p>
+    <ul>
+        <li>Users : {{ users  }} </li>
+        <li>Events: {{ events }}</li>
+    </ul>
+{% endblock %}
